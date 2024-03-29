@@ -32,4 +32,32 @@ public class ThreadScopeTest {
 
     }
 
+    @Test
+    void testIllegalMonitorStateException() throws InterruptedException {
+
+        Object object = new Object();
+        // supaya thread safe, tetapi dead lock
+//        synchronized (object){
+//            object.wait();
+//        }
+
+        // tidak menggunakann sychronized akan kena exception
+        object.wait();
+
+        log.info("will not happen");
+
+        /**
+         * will be error
+         * java.lang.IllegalMonitorStateException: current thread is not owner
+         *
+         * 	at java.base/java.lang.Object.wait0(Native Method)
+         * 	at java.base/java.lang.Object.wait(Object.java:366)
+         * 	at java.base/java.lang.Object.wait(Object.java:339)
+         * 	at com.tutorial.threadTest.ThreadScopeTest.testIllegalMonitorStateException(ThreadScopeTest.java:39)
+         * 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+         * 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+         * 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+         */
+    }
+
 }
