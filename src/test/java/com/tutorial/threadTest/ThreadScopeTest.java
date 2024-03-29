@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.LongAdder;
 
 @Slf4j
@@ -73,6 +74,14 @@ public class ThreadScopeTest {
         /**
          * ini akan deadloack
          */
+
+    }
+
+    @Test
+    void testHowToSleepForDays() throws InterruptedException {
+
+        Thread.sleep(1000); // tidur menunda selama 1 detik
+        TimeUnit.DAYS.sleep(3); // tidur menunda selama 3 hari
 
     }
 
