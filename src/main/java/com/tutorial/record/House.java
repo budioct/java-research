@@ -1,4 +1,4 @@
-package com.tutorial.pattern;
+package com.tutorial.record;
 
 public class House {
 
