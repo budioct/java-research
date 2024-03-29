@@ -60,4 +60,20 @@ public class ThreadScopeTest {
          */
     }
 
+    @Test
+    void testFastestWayToCreateADeadlock() throws InterruptedException {
+
+        Object object = new Object();
+        synchronized (object){
+            object.wait();
+        }
+
+        log.info("not happen");
+
+        /**
+         * ini akan deadloack
+         */
+
+    }
+
 }
